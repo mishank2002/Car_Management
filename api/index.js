@@ -7,6 +7,7 @@ import carRouter from './routes/car.routes.js';
 import cookieParser from 'cookie-parser';
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
+import cors from 'cors'
 
 dotenv.config();
 
@@ -25,6 +26,21 @@ const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
+
+// CORS Configuration
+const allowedOrigins = [
+  'http://localhost:5173', // Local development frontend
+  'https://mishank-car-management.onrender.com', // Replace with your production frontend URL
+];
+
+app.use(
+  cors({
+    origin: allowedOrigins,
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true, // Allow cookies or other credentials
+  })
+);
+
 
 // Swagger configuration
 const swaggerOptions = {
