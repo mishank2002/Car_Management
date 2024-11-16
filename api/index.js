@@ -37,7 +37,7 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: 'http://localhost:3000/api',
+        url: 'https://car-management-0m4n.onrender.com/api',
       },
     ],
   },
